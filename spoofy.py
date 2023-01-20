@@ -1,9 +1,15 @@
 import random
+import sys
 from PIL import Image, ImageDraw, ImageFont
 
-suffixList=["core","step","style","gaze","punk","wave"]
+try:
+    outFileName = sys.argv[1] + '.png'
+except IndexError:
+    outFileName = input('What would you like to name your file?\n') + '.png'
+
+suffixList=["core","step","style","gaze","punk","wave"," metal"]
 prefixList=["post-","neo-","alt-","proto-"]
-wordList=["sad","doom","death","crypt","grief","ghoul","creep","sorrow","dismal"]
+wordList=["sad","fear","dread","crypt","grief","ghoul","creep","sorrow","dismal"]
 
 cemetery='cemetery.jpg'
 forest='forest.jpg'
@@ -37,6 +43,6 @@ imgDraw = ImageDraw.Draw(img)
 
 imgDraw.text((10, 410), message, font=font, fill="white")
 
-img.save('example.png')
+img.save(outFileName)
 
 img.show()
